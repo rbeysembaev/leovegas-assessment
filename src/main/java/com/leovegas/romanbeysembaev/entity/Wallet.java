@@ -19,6 +19,8 @@ public class Wallet extends BaseEntity {
     @Column(nullable = false, updatable = false)
     private UUID externalId;
 
+    // BigDecimal is used instead of long to make sure fellow developers don't do any monetary operations with long,
+    // which could result in invalid calculations due to limited precision
     @Column(nullable = false)
     private BigDecimal balance;
 }

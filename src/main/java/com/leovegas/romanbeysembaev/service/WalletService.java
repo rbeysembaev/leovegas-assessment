@@ -6,6 +6,7 @@ import com.leovegas.romanbeysembaev.dto.WalletDTO;
 import java.util.List;
 import java.util.UUID;
 
+// There would be javadocs for every method in a real project
 public interface WalletService {
     WalletDTO createWallet();
     WalletDTO getWallet(UUID walletExternalId);

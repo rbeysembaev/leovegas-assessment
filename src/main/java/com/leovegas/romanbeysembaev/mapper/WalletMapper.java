@@ -6,6 +6,5 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface WalletMapper {
-    Wallet toEntity(WalletDTO source);
     WalletDTO toDTO(Wallet source);
 }
