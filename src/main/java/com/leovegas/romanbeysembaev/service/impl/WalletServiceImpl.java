@@ -111,8 +111,10 @@ public class WalletServiceImpl implements WalletService {
 
     }
 
+    // Pagination is omitted for simplicity
     @Override
     public List<TransactionDTO> listTransactions(UUID walletExternalId) {
-        return null;
+        Wallet wallet = walletRepository.findByExternalId(walletExternalId).orElseThrow(CustomNotFoundException::new);
+        return transactionMapper.toDTOs(transactionRepository.findAllByWalletOrderByCreatedDateDesc(wallet));
     }
 }
