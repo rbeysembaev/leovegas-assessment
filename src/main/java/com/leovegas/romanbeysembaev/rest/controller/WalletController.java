@@ -6,6 +6,7 @@ import com.leovegas.romanbeysembaev.rest.request.CreditRequest;
 import com.leovegas.romanbeysembaev.rest.request.DebitRequest;
 import com.leovegas.romanbeysembaev.service.WalletService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class WalletController {
 
     // In a real project, this method would accept a Request object with the user's external id, wallet name etc
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public WalletDTO createWallet() {
         return walletService.createWallet();
     }
@@ -31,6 +33,8 @@ public class WalletController {
         return walletService.getWallet(externalId);
     }
 
+    // Debit and credit are two separate endpoints/service methods because the difference in their implementations might
+    // become bigger (e.g. extra checks or even locks for debit)
     @PutMapping("/{walletExternalId}/debit")
     public TransactionDTO debit(@PathVariable UUID walletExternalId, @RequestBody DebitRequest request) {
         return walletService.debit(walletExternalId, request.getTransactionExternalId(), request.getAmount());
