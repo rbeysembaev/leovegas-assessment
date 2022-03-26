@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "26d4e6d1-89d9-4c64-b4ab-842e5aa78746",
+		"name": "Roman Beysembaev LeoVegas Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create wallet",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_URL}}/wallet",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						"wallet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Credit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"transactionExternalId\": \"a796ee85-e7b3-4835-975c-4ff1d1111114\",\n    \"amount\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_URL}}/wallet/a796ee85-e7b3-4835-975c-4ff1d4aa743d/credit",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						"wallet",
+						"a796ee85-e7b3-4835-975c-4ff1d4aa743d",
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Debit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"transactionExternalId\": \"a796ee85-e7b3-4835-975c-4ff1d1111115\",\n    \"amount\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_URL}}/wallet/a796ee85-e7b3-4835-975c-4ff1d4aa743d/debit",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						"wallet",
+						"a796ee85-e7b3-4835-975c-4ff1d4aa743d",
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get wallet",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_URL}}/wallet/a796ee85-e7b3-4835-975c-4ff1d4aa743d",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						"wallet",
+						"a796ee85-e7b3-4835-975c-4ff1d4aa743d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_URL}}/wallet/a796ee85-e7b3-4835-975c-4ff1d4aa743d/transaction",
+					"host": [
+						"{{SERVER_URL}}"
+					],
+					"path": [
+						"wallet",
+						"a796ee85-e7b3-4835-975c-4ff1d4aa743d",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "SERVER_URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
