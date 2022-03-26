@@ -35,6 +35,8 @@ public class WalletController {
 
     // Debit and credit are two separate endpoints/service methods because the difference in their implementations might
     // become bigger (e.g. extra checks or even locks for debit)
+    // createdDate in the returned TransactionDTO is null because @CreationTimestamp fields are set on flush,
+    // but I thought it's acceptable here
     @PutMapping("/{walletExternalId}/debit")
     public TransactionDTO debit(@PathVariable UUID walletExternalId, @RequestBody DebitRequest request) {
         return walletService.debit(walletExternalId, request.getTransactionExternalId(), request.getAmount());
